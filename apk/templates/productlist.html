@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <!-- Bootstrap CSS (optional, for styling) -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-card h5 {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        .product-card p {
+            color: #555;
+        }
+        .product-card .price {
+            font-size: 1.5em;
+            color: #007bff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Product List</h1>
+        <div class="row">
+            {% for product in prod %}
+            <div class="col-md-4">
+                <div class="product-card">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.productname }}">
+                    {% else %}
+                    <img src="https://via.placeholder.com/300" alt="Placeholder image">
+                    {% endif %}
+                    <h5>{{ product.productname }}</h5>
+                    <p>{{ product.description }}</p>
+                    <div class="price">${{ product.productprice }}</div>
+                    <div class="category">{{ product.category }}</div>
+                    <a href="/delproduct/{{ product.id }}">Delete</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>No products available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

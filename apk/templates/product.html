@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+body {
+  background-image: url('https://i.pinimg.com/236x/b3/ce/75/b3ce75d94c08002780b36b482696321a.jpg');
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff6a1;
+  height: 600px;
+  width: 500px;
+  border: 2px solid #dabb34;
+  border-radius: 20px;
+  box-shadow: 3px 4px 0px 1px #f1c650;
+}
+
+.title {
+  color: #264143;
+  font-weight: 900;
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+.sub_title {
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 10px;
+}
+
+.form_style {
+  outline: none;
+  border: 2px solid #dabb34;
+  box-shadow: 3px 4px 0px 1px #f1c650;
+  width: 290px;
+  padding: 12px 10px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.form_style:focus, .btn:focus {
+  transform: translateY(4px);
+  box-shadow: 1px 2px 0px 0px #f1c650;
+}
+
+.btn {
+  padding: 15px;
+  margin: 25px 0px;
+  width: 290px;
+  font-size: 15px;
+  background: #dabb34;
+  border-radius: 10px;
+  font-weight: 800;
+  box-shadow: 3px 3px 0px 0px #f1c650;
+}
+
+.btn:hover {
+  opacity: .9;
+}
+
+
+
+</style>
+
+    </style>
+<body>
+  
+  <div class="container">
+    <div class="form_area">
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form_group">
+                <label class="sub_title" for="productname">Product Name</label>
+                
+                <input type="text"  class="form_style" id="productname" name="productname" required>
+            </div>
+            <div class="form_group">
+                <label class="sub_title" for="productprice">Product Price</label>
+                <input type="number" class="form_style" name="productprice">
+            </div>
+            <div class="form_group">
+                <label class="sub_title" for="category">Category</label>
+                <select class="form_style" name="category">
+                  <option value="Food">Food</option>
+                  <option value="Toys">Toy</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Tower">Tower</option>
+                  <option value="Bed">Bed</option>
+                  <option value="Cloth">Clothes</option>
+                  <option value="Litter">Litter</option>
+                  <option value="Others">Others</option>
+              </select>
+            </div>
+            <div class="form_group">
+                <label class="sub_title" for="description">Description</label>
+                <textarea class="form_style" name="description" rows="5" cols="40"></textarea>
+            </div>
+
+            <div class="form_group">
+              <label class="sub_title" for="image">Product Image</label>
+              <input type="file" class="form_style" name="image" accept="image/" >
+          </div>
+
+            <div>
+                <button class="btn">Add Now</button><br>
+                
+        
+    </form></div><a class="link" href="">
+</div>
+</body>
+</html>
