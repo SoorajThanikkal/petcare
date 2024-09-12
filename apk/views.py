@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import userreg,product,PostModel,CommentSectionModel
-
+from django.http import HttpResponseForbidden
 
 def index(request):
     return render(request,'index.html')  
@@ -132,7 +132,7 @@ def DisplayPostsView(request):
     else:
         liked_posts = []
     
-    return render(request, 'viewallposts.html', {'posts': posts, 'liked_posts': liked_posts})
+    return render(request, 'viewallposts.html', {'posts': posts, 'liked_posts': liked_posts,'us': user})
 def like_post(request, post_id):
     post = get_object_or_404(PostModel, id=post_id)
     email = request.session.get('email')
@@ -161,6 +161,19 @@ def add_comment(request, post_id):
                 comment=comment_text
             )
     return redirect('view_all_posts')
+
+
+def DeleteCommentsView(request, cmt_id):
+    comment = get_object_or_404(CommentSectionModel, id=cmt_id)
+    email= request.session['email']
+    user=userreg.objects.get(email=email)
+    print(user)
+    # Check if the logged-in user is the author of the comment
+    if user == comment.user:
+        comment.delete()
+        return redirect('view_all_posts')
+    else:
+        return HttpResponseForbidden("You are not allowed to delete this comment.")
         
             
 # Create your views here.

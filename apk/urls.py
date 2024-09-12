@@ -14,14 +14,12 @@ urlpatterns=[
     path('editprofile/',views.editprofile,name='editprofile'),  
     path('deluser/<int:id>',views.deluser,name='deluser'),  
     path('delproduct/<int:id>',views.delproduct,name='delproduct'),  
-    
-    
     #Post Section
-    
     path('add_post/',views.CreatePostView,name='add_post'),
     path('posts/', views.DisplayPostsView, name='view_all_posts'),
     path('posts/<int:post_id>/like/', views.like_post, name='like_post'),
     path('posts/<int:post_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('comments_delete/<int:cmt_id>/',views.DeleteCommentsView, name='delete_comments'),
     
 
 ]

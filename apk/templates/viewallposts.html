@@ -112,17 +112,22 @@
                         <div class="flex-grow bg-gray-100 rounded-lg p-3">
                             <p class="font-semibold text-sm">{{ comment.user.username }}</p>
                             <p class="text-sm">{{ comment.comment }}</p>
+            
+                            <!-- Only show delete option if the logged-in user is the author of the comment -->
+                            {% if comment.user == us %}
+                            <a href="/comments_delete/{{comment.id}}/" class="text-red-500 hover:underline"><i class="fa-regular fa-trash-can"></i> Delete</a>
+                            {% endif %}
                         </div>
                     </li>
                     {% endfor %}
                 </ul>
-
+            
                 <form action="{% url 'add_comment' post.id %}" method="POST" class="flex items-center">
                     {% csrf_token %}
                     <input type="text" name="comment" class="flex-grow bg-gray-100 border border-gray-300 rounded-full px-4 py-2 text-sm" placeholder="Add a comment...">
                     <button type="submit" class="ml-2 text-blue-600 font-semibold text-sm">Post</button>
                 </form>
-            </div>
+            </div>            
         </div>
         {% endfor %}
     </div>
