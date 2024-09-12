@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import userreg,product,PostModel,CommentSectionModel
-from django.http import HttpResponseForbidden
+from django.http import HttpResponse
 
 def index(request):
     return render(request,'index.html')  
@@ -173,7 +173,7 @@ def DeleteCommentsView(request, cmt_id):
         comment.delete()
         return redirect('view_all_posts')
     else:
-        return HttpResponseForbidden("You are not allowed to delete this comment.")
+        return HttpResponse("You are not allowed to delete this comment.")
         
             
 # Create your views here.
