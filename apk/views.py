@@ -127,7 +127,7 @@ def DisplayPostsView(request):
         liked_posts = user.liked_posts.all()
         post_comments = {}
         for post in posts:
-            comments = CommentSectionModel.objects.filter(post=post)  # Fetch comments for each post
+            comments = CommentSectionModel.objects.filter(post=post)  
             post.comment_count = comments.count()
     else:
         liked_posts = []
